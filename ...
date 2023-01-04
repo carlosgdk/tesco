@@ -1,7 +1,5 @@
-Tab:AddButton({
-	Name = "Silent Aim",
-	Callback = function()
-      	loadstring(game:HttpGet("https://pastebin.com/raw/P24wQnDx"))()
+-- // Dependencies
+local Aiming = loadstring(game:HttpGet("https://pastebin.com/raw/P24wQnDx"))()
 Aiming.TeamCheck(false)
 
 -- // Services
@@ -68,5 +66,3 @@ RunService:BindToRenderStep("AimLock", 0, function()
         CurrentCamera.CFrame = CFrame.lookAt(CurrentCamera.CFrame.Position, Hit.Position)
     end
 end)
-  	end    
-})
