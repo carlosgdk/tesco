@@ -1,0 +1,71 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Player = game.Players.LocalPlayers
+local Window = OrionLib:MakeWindow({Name = "Key System", HidePremium = false, SaveConfig = true, IntroEnabled = false })
+
+
+OrionLib:MakeNotification({
+	Name = "Logged in!",
+	Content = "You are logged in as "..Player.Name..".",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+_g.Key = "DrilltimingEatsBabies"
+_g.KeyInput = "string"
+
+
+-- Put script hub here
+function MakeScriptHub()
+    print("EnterCorrectKey")
+end
+
+function CorrectKeyNotification()
+    OrionLib:MakeNotification({
+	    Name = "Correct Key!",
+	    Content = "You entered the correct key.",
+	    Image = "rbxassetid://4483345998",
+	    Time = 5
+})
+
+function IncorrectKeyNotification()
+    OrionLib:MakeNotification({
+	    Name = "Incorrect Key!",
+	    Content = "You entered the incorrect key.",
+	    Image = "rbxassetid://4483345998",
+	    Time = 5
+})
+
+
+
+local Tab = Window:MakeTab({
+	Name = "Key",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddTextbox({
+	Name = "Enter Key",
+	Default = "",
+	TextDisappear = true,
+	Callback = function(Value)
+		_g.KeyInput = value
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Check Key",
+	Callback = function()
+      	if _G.KeyInput == _G.Key then
+        MakeScriptHub()
+        CorrectKeyNotification()
+        else
+            IncorrectKeyNotification()
+        end
+  	end    
+})
+
+
+
+
+end
+OrionLib:Init()
